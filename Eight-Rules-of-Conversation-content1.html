@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Eight Core Conversation Principles | Social Attraction Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* 全局导航 和全站页面完全统一 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* 面包屑导航 */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 课程阅读主体 */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .rule-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight:700;
+            margin:2rem 0 0.8rem;
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        .text-green-highlight {
+            color: var(--primary-dark);
+            font-weight:700;
+        }
+        /* 案例卡片 */
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin:1.5rem 0;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size:1.1rem;
+        }
+        /* 准则汇总卡片 */
+        .rule-summary-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+        .rule-item {
+            font-size:1.1rem;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:0.8rem;
+        }
+        /* 底部过渡区块 */
+        .transition-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部统一导航 -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 面包屑链路 -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="Eight-Rules-of-Conversation4.html">Course Detail</a>
+            <span>/</span>
+            <span>Lesson 3: Eight Core Conversation Principles</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">Eight Principles of Conversation</h1>
+
+            <p class="text-p">
+                Many beginners in chatting have this thought: if the other person isn't replying, it must be because I said something wrong, or my chatting style is incorrect. But is that really the case? Let me give you an example.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Analogy Case: Skin Acne & Hormone Imbalance</div>
+                <p class="text-p" style="margin-bottom:0;">Suppose you recently got two pimples on your face, and you go to see a doctor. You tell the doctor, "Doctor, I have pimples on my face, please take a look and see if it's a skin problem." The doctor examines you and says, "This has nothing to do with your skin; it's entirely because you haven't been getting enough rest lately, you've been staying up late, and you're a bit stressed—it's a hormonal imbalance. I'll prescribe some medicine for you to take."</p>
+                <p class="text-p">Then, the doctor prescribes two doses of medicine to regulate your hormones, and after a few days, the problem is resolved.</p>
+                <p class="text-p" style="margin-bottom:0;">If you lack common sense, you might argue: "This is clearly a facial skin issue, why fix hormones instead?" This logic sounds ridiculous, yet countless chat beginners fall into the exact same trap.</p>
+            </div>
+
+            <p class="text-p">
+                In reality, negative feedback from the other person in a chat doesn't necessarily mean you said something wrong. Many people mistakenly believe they did something wrong. Therefore, when receiving negative feedback, you should first determine if you actually made a mistake.
+            </p>
+            <p class="text-p text-green-highlight">
+                The eight core principles I'm about to discuss are your judgment benchmark.
+            </p>
+            <p class="text-p">
+                Compare these principles with your own chat content. If you have indeed violated these principles, then you have made a mistake in chatting, and you should correct it promptly. However, if you haven't violated these principles, then your problem may not lie in your chatting. You need a more comprehensive analysis to find the root cause.
+            </p>
+
+            <div class="rule-summary-card">
+                <p class="rule-item">1. Prohibit consecutive questions</p>
+                <p class="rule-item">2. Do not prioritize using default system emoticons</p>
+                <p class="rule-item">3. Strictly prohibit emoticon spamming battles</p>
+                <p class="rule-item">4. All replies must carry substantive content</p>
+                <p class="rule-item">5-8: Four advanced conversation rules (covered after basic rules)</p>
+            </div>
+
+            <h2 class="sub-title">Rule 1: Prohibit consecutive questions</h2>
+            <p class="text-p">
+                It is the most basic chat standard to prohibit continuous questions. After years of online education, most people have learned that this is not good, but there are still many people who can't help but ask questions continuously during chats. Because there is always a confusion in their hearts, that is, if I don't ask questions, how can I know the other party's information?
+            </p>
+            <p class="text-p">
+                Indeed, asking questions is the most basic way to get to know each other's information at the beginning, but what I want to emphasize to you here is not to ask questions continuously. Because asking questions continuously will make the other party feel very abrupt and impolite. At the same time, the other party will feel that chatting with you is boring and that you have a strong sense of need.
+            </p>
+
+            <div class="case-card">
+                <div class="case-head">Bad Example: Serial Questioning Chat Flow</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    You: Where are you from?<br>
+                    Her: City A<br>
+                    You: Where do you work?<br>
+                    Her: Advertising company<br>
+                    You: What's your zodiac sign?<br>
+                    Her: Aries
+                </p>
+                <p class="text-p">This rigid question chain creates awkward, interview-style chatting with no emotional resonance.</p>
+                <p class="text-p" style="margin-bottom:0;">
+                    Correct Method: After receiving an answer, extend the topic first before asking new questions.<br>
+                    Example: She says she’s a Gemini → You reply "I’m also an air sign, Aquarius, we must match really well." Chat around zodiacs first, then bring up new topics like work/hobbies later.
+                </p>
+            </div>
+
+            <h2 class="sub-title">Rule 2: Do not give priority to using system emoticons</h2>
+            <p class="text-p">
+                What are system expressions? The system emoticon is the little yellow-faced emoticon that comes with the keyboard input method. Many novice chatters have a habit of adding an emoticon at the end of the chat, such as helplessness, crying, laughing, etc. Their purpose is actually very simple, just to make their tone better and softer, because they are afraid that without expression, their tone will appear too strong or too cold, which will make people feel uncomfortable.
+            </p>
+            <p class="text-p">
+                Although this kind of thinking is understandable, this behavior is actually a manifestation of inner lack of confidence. Even if you want to balance your tone, there are many better ways to handle it; adding built-in yellow emojis after every sentence is the worst choice. It makes you look emotionally unstable and overly delicate.
+            </p>
+            <p class="text-p">
+                Correct standard: If the other party never uses system emoticons, avoid them entirely. If they send emojis every 2-3 sentences, you may echo their habit occasionally. Emojis are optional, not mandatory for smooth conversation.
+            </p>
+
+            <h2 class="sub-title">Rule 3: Strictly prohibit emoticon fighting / spamming emoticon battles</h2>
+            <p class="text-p">
+                This is a very strict rule in chat training. The act of posting stacks of emoticons to compete with each other was popular a decade ago, but it has been eliminated by modern social standards. You can keep a small collection of useful emoticons to send occasionally, but never enter full emoticon battle mode.
+            </p>
+            <p class="text-p">
+                Once you start spamming emoticons back and forth, your original conversation topic completely disappears. After you finish sending all your emoticons, both sides will be confused, not knowing what to talk about next, leading to awkward silence and dead chats.
+            </p>
+            <p class="text-p">
+                The correct use of emoticons: only as subtle embellishments to assist emotional expression, just like body language in in-person talks. You would never communicate only through gestures face-to-face—chatting works the same way. Emojis are auxiliary, not the core of conversation.
+            </p>
+
+            <h2 class="sub-title">Rule 4: Replying to messages must have substantive content</h2>
+            <p class="text-p">
+                Many brothers reply with empty words like um, oh, yeah, which is a major chat taboo. If you send these hollow replies, the other person will instantly sense you don’t want to continue talking, and lose motivation to engage with you.
+            </p>
+            <p class="text-p">
+                Even when the conversation is naturally wrapping up, short empty replies damage the interaction mood and lower the other person’s expectations for future dates or chats. The core rule: every reply must carry meaningful content.
+            </p>
+
+            <div class="case-card">
+                <div class="case-head">Two Valid Ending Methods Instead of Empty Replies</div>
+                <p class="text-p"><strong>Method 1: Clear direct ending</strong><br>When she says "I’m going to bed", reply "Good night, talk to you tomorrow" — clean, unambiguous closure.</p>
+                <p class="text-p"><strong>Method 2: Emotional extension for future plans</strong><br>You invite her for dinner tomorrow, she replies "Sure". Instead of "um", reply "Looking forward to seeing you tomorrow". This amplifies positive expectation for your upcoming meetup.</p>
+                <p class="text-p" style="margin-bottom:0;">If you cannot pick up the topic, use the feeling evaluation method (taught in later lessons) or open a brand new topic. At minimum, clearly state you have business to attend to and reschedule the chat, never leave the conversation hanging awkwardly.</p>
+            </div>
+
+            <p class="text-p">
+                These four rules are the foundational basic standards of the eight conversation principles. The following four advanced core rules will be explained in the subsequent lesson segments.
+            </p>
+
+            <div class="transition-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">Lesson Preview Reminder</h2>
+                <p class="text-p">
+                    Master these four basic rules first to eliminate the most common rookie chat mistakes. Every chat you send can be measured against this set of eight principles to quickly identify your errors and optimize your communication rhythm.
+                </p>
+                <p class="text-p text-green-highlight" style="margin-bottom:0;">
+                    Every reply you send shapes your personal social value; solid basic chat rules build stable, attractive interpersonal charm.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

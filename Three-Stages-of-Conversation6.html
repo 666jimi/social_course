@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to attract others? ATTRACTION! | Free Course Detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --orange-premium: #F59E0B;
+            --green-free: #10B981;
+        }
+
+        /* 导航栏 全局统一样式 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 页面通用容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* 面包屑返回区 */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+
+        /* 课程头部横幅 */
+        .course-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .course-banner-box {
+            height: 320px;
+            background: var(--primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #fff;
+            position: relative;
+            box-shadow: 0 6px 18px rgba(82, 211, 190, 0.2);
+        }
+        .tag-free-banner {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 14px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: var(--green-free);
+            color: white;
+        }
+        .course-info h1 {
+            font-size: 2.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .course-desc {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+        }
+        .course-meta-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .meta-item small {
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+        .meta-item strong {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-top: 4px;
+        }
+        .full-access-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #52D3BE, #207F4C);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: opacity 0.25s ease;
+        }
+        .full-access-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* 主体内容分栏 */
+        .course-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            padding-bottom: 6rem;
+        }
+
+        /* 左侧大纲区域 */
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            padding-left: 0.6rem;
+            border-left: 4px solid var(--primary);
+        }
+        .lesson-list {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+        }
+        .lesson-item {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .lesson-item:last-child {
+            border-bottom: none;
+        }
+        .lesson-unlock-tag {
+            background: var(--green-free);
+            color: white;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+        }
+
+        /* 右侧侧边栏 免费课程介绍 */
+        .sidebar-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            padding: 2rem;
+            position: sticky;
+            top: 120px;
+        }
+        .sidebar-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .sample-text {
+            color: var(--text-body);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .free-note {
+            background: #ECFDF5;
+            padding: 1rem;
+            border-radius: 10px;
+            color: #065F46;
+            margin-bottom: 1.5rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            .course-header, .course-main {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .course-info h1 {
+                font-size: 1.8rem;
+            }
+            .course-meta-row {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+        .course-meta-row {
+            display: flex;
+            justify-content: space-between; /* 左右两端分开：左边文字，右边星星 */
+            align-items: flex-end; /* 底部对齐，和截图视觉一致 */
+            margin-top: 1rem;
+        }
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        /* 星星尺寸微调，按需修改字号 */
+        .course-meta-row .meta-item strong {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 全局统一导航 -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 面包屑导航 -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <span>Three Stages of Conversation</span>
+        </div>
+
+        <!-- 课程头部 -->
+        <div class="course-header">
+            <div class="course-banner-box">
+                💪
+                <span class="tag-free-banner">Free</span>
+            </div>
+            <div class="course-info">
+                <h1>Three Stages of Conversation</h1>
+                <p class="course-desc">
+                    Just as relationships deepen over time, conversations should also progress from superficial to profound; this lesson will outline the proper stages of conversation to help us successfully develop the relationship.
+                </p>
+                <div class="course-meta-row">
+                    <div class="meta-item">
+                        <small>Total Lessons</small>
+                        <strong>1 Lesson</strong>
+                    </div>
+                    <div class="meta-item">
+                    
+                        <strong>⭐⭐</strong>
+                    </div>
+                    
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+    <a href="Three-Stages-of-Conversation-content.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
+        Start Learning Course
+    </a>
+    
+</div>
+</a>
+
+            </div>
+        </div>
+
+        
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

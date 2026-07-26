@@ -1,0 +1,26 @@
+.desc-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+/* 红色荧光文字，统一复用 */
+.fluorescent-red {
+    color: #e21768;
+    font-weight: 700;
+    /* 荧光发光效果 */
+    text-shadow: 0 0 6px rgba(226, 23, 104, 0.7), 0 0 12px rgba(226, 23, 104, 0.4);
+}
+.main-hero-title-glow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 8vw, 5rem);
+    text-align: center;
+    line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 
+        0 0 6px #52D3BE,
+        0 0 12px #52D3BE,
+        0px 4px 0 #2e8c7d,
+        0px 8px 15px rgba(0,0,0,0.2);
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+}

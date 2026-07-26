@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Gentle Yet Firm Mindset | Social Attraction Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* 全局导航 与全站页面完全统一 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* 面包屑导航 */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 课程阅读主体 */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .third-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight:700;
+            margin:2rem 0 0.8rem;
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        .text-green-highlight {
+            color: var(--primary-dark);
+            font-weight:700;
+        }
+        /* 案例卡片 */
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin:1.5rem 0;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size:1.1rem;
+        }
+        /* 核心要点清单卡片 */
+        .point-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+        .point-item {
+            font-size:1.1rem;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:0.8rem;
+        }
+        /* 底部总结区块 */
+        .summary-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部统一导航 -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 面包屑链路 -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="Invincible-mindset2.html">Course Detail</a>
+            <span>/</span>
+            <span>Lesson 1: Gentle Yet Firm Mindset</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">Mindset is the beginning of everything: Gentle yet firm.</h1>
+
+            <p class="text-p">
+                This lesson is the first in our chat training system. I'll be teaching you about the mindset for chatting. Many people think that learning to chat should involve learning methods and techniques, such as how to say this, how to phrase that, how to start a conversation, how to evoke emotions, the flow and structure of a chat, etc. Shouldn't we be talking about these things? Why talk about mindset?
+            </p>
+            <p class="text-p">
+                But I want to tell you that <span class="text-green-highlight">the most important thing in chatting is mindset!</span> I have many students who, before coming to me, had self-studied some so-called chatting techniques, but when they chat with girls, you'll find things go wrong. Sometimes they argue, confront the girl, or even swear during the conversation. These situations occur because they haven't realized the power of mindset, and their chatting goals are unclear, so the conversation goes astray.
+            </p>
+            <p class="text-p">
+                This is due to a lack of a firm value system, which is why I'm talking about mindset from the beginning. If you don't have a correct understanding of mindset, you won't even get started in chat training. Chatting techniques are merely the outward expression of your values. With only superficial techniques, you'll be at a loss when facing complex social environments. What truly determines the effectiveness of a conversation is always your solid value system. Therefore, the first thing we need to do in conversation training is to adjust our mindset. What is a good conversational mindset? In short, it's gentle yet firm.
+            </p>
+
+            <h2 class="sub-title">Part 1: Gentleness</h2>
+            <p class="text-p">
+                Gentleness is about not being picky, seeing the beauty in the world, and possessing a kind and generous character. This trait is often found in people who are innerly rich. Why? Because only when your own heart is rich enough, not barren, can you have the abundant capacity to love others and make them feel like they are bathed in a spring breeze.
+            </p>
+            <p class="text-p">
+                When someone perceives your gentleness, they will be quickly attracted by your personal charm because behind gentleness lie many attractive elements that only high-value individuals possess. For example, strong understanding, strong emotional self-control, and strong tolerance. In any society, it is the strong who tolerate the weak; you have never heard of the weak tolerating the strong.
+            </p>
+            <p class="text-p">
+                Moreover, we say that the differences between male and female thinking are huge. If you can genuinely tolerate the thoughts and behaviors of the opposite sex that you find difficult to understand, then your strong tolerance surpasses that of most men. And the gentle power generated by this tolerance is an extremely strong social attraction that cannot be matched by external money or material possessions. The first key to a good mindset is gentleness.
+            </p>
+            <p class="text-p">
+                Of course, this gentleness can't be given in a single lesson; it requires long-term training. How do you train yourself? It's simple: try to understand others from different perspectives, smile more at life, and feel the kindness of the world. These things will make you increasingly gentle.
+            </p>
+
+            <div class="case-card">
+                <div class="case-head">Gentleness Training Example: Parent & Child</div>
+                <p class="text-p" style="margin-bottom:0;">Imagine you're a parent who has just finished cleaning the house, and your child breaks a glass full of juice. Someone who hasn't been trained in gentleness would immediately get angry and scold the child. They would think, "I worked so hard to clean the house, and you don't appreciate my efforts!" Feeling offended, they would uncontrollably generate strong anger and vent it. Afterwards, they would regret it, feeling they shouldn't have been so harsh.</p>
+                <p class="text-p">How can we change this situation? Think about other perspectives. Is it possible that the child thought the drink was delicious and wanted to pour you a glass, which led to the accidental breakage? Is it possible that they are at an age full of curiosity? When you look at these angles, you can see more of the child's adorable side, not just the spilled drink on the floor.</p>
+                <p class="text-p" style="margin-bottom:0;">Apply this logic to daily socializing: when colleagues or friends upset you, pause and view things from multiple perspectives. Once this becomes a habit, you will get angry less, understand others more, grow gentler, and people will naturally draw closer to you.</p>
+            </div>
+
+            <h2 class="sub-title">Part 2: Firmness</h2>
+            <p class="text-p">
+                If gentleness requires time and practice, then firmness is a mindset you can grasp immediately. What is firmness? Firmness complements gentleness. What happens if someone is only gentle but not firm? They might end up being a pushover, easily bullied and taken advantage of. The same applies to dating; over-gentleness will make you become a backup option. Therefore, besides gentleness, we need firmness as our core boundary.
+            </p>
+            <p class="text-p">
+                Firmness refers to unbreakable social principles, and the very first principle to uphold is your own self-worth.
+            </p>
+
+            <div class="case-card">
+                <div class="case-head">Self-Worth Example: Dating Invitation</div>
+                <p class="text-p" style="margin-bottom:0;">You want to ask a girl out, and you know she likes John Mayer. Think about this: is this girl going out with you because she wants to see a John Mayer concert, or because she's thinking of you and wanting to hang out?</p>
+                <p class="text-p">Many people fall into the wrong mindset: ME + XXX = Girl, where external conditions (concert tickets, gifts, money) weigh far more than their own personality value. They believe their own value is not enough to attract the girl, so they must rely on extra outside perks to win her over.</p>
+                <p class="text-p" style="margin-bottom:0;">The correct starting point for all romantic relationships is <span class="text-green-highlight">I equal the girl</span>. All external XXX factors are only icing on the cake. If you rely on XXX to attract others, they will only love your perks, not you. Once you lose those external conditions, the whole relationship collapses. The real solution is to upgrade your own charm and self-worth through this course.</p>
+            </div>
+
+            <h3 class="third-title">Three Core Firm Principles: Dignified Social Interaction</h3>
+            <div class="point-card">
+                <p class="point-item">1. No agonizing & overthinking</p>
+                <p class="text-p" style="margin-bottom:1rem;">People feel anxious only when they overvalue the other person and fear making mistakes. In reality, one or two awkward sentences will never ruin a relationship, but anxious, hesitant mindsets will make you look weak and put you at a social disadvantage. Speak boldly without overthinking every word.</p>
+
+                <p class="point-item">2. No unnecessary explaining</p>
+                <p class="text-p" style="margin-bottom:1rem;">Constantly explaining yourself is a weak man’s trait. Only those who feel inferior will rush to clarify every detail to gain others’ approval. Mature, high-value men can withstand misunderstanding; your inner strength grows as you stop over-explaining.</p>
+
+                <p class="point-item">3. No fawning / groveling</p>
+                <p class="text-p" style="margin-bottom:0;">Groveling elevates the other person above you and exposes low self-worth. When you unconditionally give and sacrifice cheaply, others will clearly sense you don’t believe you’re worthy of them, which drastically reduces your attraction. Never degrade yourself to win others’ favor.</p>
+            </div>
+
+            <div class="summary-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">Full Lesson Summary</h2>
+                <p class="text-p">
+                    A powerful conversational mindset balances two core traits: <span class="text-green-highlight">Gentle yet Firm</span>.
+                </p>
+                <p class="text-p">
+                    <strong>Gentleness</strong> comes from inner abundance: learn multi-angle understanding, tolerate differences, stay kind and generous, and hold empathy for everyone around you. This tolerance creates rare, irreplaceable emotional attraction.
+                </p>
+                <p class="text-p">
+                    <strong>Firmness</strong> has two core rules:
+                    <br>1. Hold firm to your self-worth, reject the "I + external perks = attraction" wrong mindset.
+                    <br>2. Keep dignified social boundaries: no agonizing, no over-explaining, no fawning.
+                </p>
+                <p class="text-p">
+                    Keep this mindset in mind for every chat scenario, and practice it in daily conversations. Your social charm and chat results will continuously improve over time.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

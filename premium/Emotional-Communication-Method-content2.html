@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 14: Core Emotion 2 – Emotional Resonance | Matches Step 2 Getting to Know Each Other</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* Global Sticky Navigation Consistent With All Lessons */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Universal Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Reading Wrapper */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .third-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight:700;
+            margin:2rem 0 0.8rem;
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        .text-green-highlight {
+            color: var(--primary-dark);
+            font-weight:700;
+        }
+        /* Case & Technique Card */
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin:1.5rem 0;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size:1.1rem;
+        }
+        /* Three Core Resonance Factors Card */
+        .factor-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+        .factor-item {
+            font-size:1.1rem;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:0.8rem;
+        }
+        /* Three Positive Expression Skills Card */
+        .skill-card {
+            background: #ecfdf5;
+            border: 1px solid var(--primary-dark);
+            border-radius: 12px;
+            padding:1.5rem;
+            margin:1.5rem 0;
+        }
+        /* Final Summary Gradient Block */
+        .final-summary-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Global Navigation Bar -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="Emotional-Communication-Method8.html">Course Detail</a>
+            <span>/</span>
+            <span>Lesson 14: Core Emotion 2 – Emotional Resonance</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">Course Introduction — Core Emotion 2: Emotional Resonance (Matching Step 2 Getting to Know Each Other)</h1>
+
+            <p class="text-p">
+                Emotional Resonance is the second core emotion of the Emotional Communication System, activated right after you spark the emotion of interest in the icebreaking opening. Interest alone cannot sustain a long conversation; it fades rapidly without emotional resonance as continuous emotional support. Once positive resonance forms, mutual interest will keep rising steadily, bridging both sides into deep familiarity during the getting-to-know-each-other stage.
+            </p>
+
+            <h2 class="sub-title">Definition: What Is Emotional Resonance?</h2>
+            <p class="text-p">
+                Emotional resonance is a two-way psychological vibration: two people perceive, transmit, collide, and influence each other’s emotions continuously during communication, creating synchronized emotional states. It splits into two opposite categories: positive emotional resonance and negative emotional resonance.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Daily Life Examples of Resonance</div>
+                <p class="text-p">1. Passive environmental resonance: Happy crowds make you joyful; sad crowds make you depressed; movie plots make you laugh and cry alongside characters.</p>
+                <p class="text-p">2. Positive chat resonance: You share a joke/meme, the other person catches your point and extends the topic — you feel like kindred spirits, tacit understanding grows.</p>
+                <p class="text-p">3. Negative chat resonance: You send a fun topic, only get cold "oh" replies; you grow anxious and reply stiffly, they respond even colder, locking both in awkward low mood.</p>
+            </div>
+            <p class="text-p text-green-highlight">All effective social interaction targets positive emotional resonance; negative resonance will cut off relationship progress completely.</p>
+
+            <h2 class="sub-title">Three Core Factors to Create Positive Emotional Resonance</h2>
+            <div class="factor-card">
+                <p class="factor-item">1. Actively output continuous positive emotional signals (core initiative)</p>
+                <p class="factor-item">2. Block and reduce the influence of external negative emotions (prevent negative resonance)</p>
+                <p class="factor-item">3. Consistently elevate your personal comprehensive value (drive others to take positive initiative)</p>
+            </div>
+
+            <h3 class="third-title">Factor 1: Deliver Positive Emotional Signals (Two Layers: Conversation Skills + Inner Positive Energy)</h3>
+            <p class="text-p">The initiator of the conversation controls the emotional tone of resonance; starting with positive emotions locks in positive resonance from the beginning.</p>
+            <div class="skill-card">
+                <p class="factor-item">Three practical conversational techniques to activate positive emotions:</p>
+                <p class="text-p">1. Curiosity-inducing openings (secret/preview hooks to pull their focus into your mood)</p>
+                <p class="text-p">2. Disqualification playful teasing (deliberate absurd contrast to break stiff cold atmosphere)</p>
+                <p class="text-p">3. Role-play interaction (build game-like shared identities to narrow psychological distance)</p>
+            </div>
+            <div class="case-card">
+                <div class="case-head">Technique Application Examples</div>
+                <p class="text-p"><strong>Curiosity hook:</strong> I found a super interesting little detail about you, wanna hear?</p>
+                <p class="text-p"><strong>Disqualification tease (against cold reply):</strong> Hmph, you’re not being nice to me today, where’s your usual warmth?</p>
+                <p class="text-p"><strong>Role-play dating chat:</strong> Your king has been swamped with work all day, has my queen missed me?</p>
+            </div>
+            <p class="text-p text-red-highlight">Skill usage reminder: Do not over-rely on these tricks. Overusing playful techniques makes you look immature; techniques are only auxiliary tools, inner positive energy is the permanent foundation.</p>
+            <p class="text-p">Inner positive energy means stable optimistic, hopeful, empowering mental state, forming a virtuous emotional cycle. People surrounded by negative energy (constant complaining, pessimism) will drag others into bad mood; positive energy naturally draws comfortable, positive responses from others.</p>
+
+            <h3 class="third-title">Factor 2: Reduce the Impact of Negative Emotions & Avoid Negative Resonance</h3>
+            <p class="text-p">Many beginners fall into negative resonance loops after receiving cold, short replies: they feel offended, get angry, send sarcastic counterattacks, making the atmosphere irreparable. Two clear choices when facing negative feedback:
+            <br>1. If you still want to advance the relationship: Maintain gentle, firm emotional stability, do not retaliate with negative words; your calm maturity generates strong charm.
+            <br>2. If the other party repeatedly shows disrespect: Voluntarily abandon this social connection, no need to waste energy.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Contrast Reaction To Cold One-Word Replies</div>
+                <p class="text-p"><strong>Wrong negative reaction:</strong> Why are you only replying "oh"? You’re so rude, you don’t even want to chat with me.</p>
+                <p class="text-p"><strong>Correct stable positive reaction:</strong> Seems like you’re busy today, I’ll leave you to your stuff, we can chat later when you’re free.</p>
+            </div>
+
+            <h3 class="third-title">Factor 3: Continuously Improve Your Personal Value</h3>
+            <p class="text-p">High-value people make others fear losing the chance to communicate with them, so the other party will automatically adjust their attitude to output positive emotions to match you. This reinforces positive resonance continuously, consistent with the value-building logic covered in the Interest emotion lesson.</p>
+
+            <h2 class="sub-title">Extended Hidden Factors That Affect Emotional Resonance</h2>
+            <p class="text-p">Emotional transmission is not limited to words; offline environmental conditions also dominate resonance direction:
+            <br>• Space style: Soft warm lighting & sofas create relaxed intimate resonance; rigid mahogany formal furniture creates restrained distant mood.
+            <br>• Venue atmosphere: Quiet upscale restaurants build ambiguous romantic resonance; roadside barbecue stalls create casual friend-style resonance.
+            <br>• Auxiliary conditions: Weather, time of day, background music all subtly shift both sides’ emotional rhythm and resonance quality.
+            </p>
+
+            <div class="final-summary-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">Full Lesson Core Summary</h2>
+                <p class="text-p text-green-highlight">
+                    Emotional Resonance is Step 2 matching emotion for the Five-Step Chatting System, the sustaining emotional support for initial interest:
+                </p>
+                <p class="text-p">
+                    1. Core definition: Two-way synchronized emotional vibration, split into positive and negative resonance; all relationship progress relies on positive resonance;
+                    <br>2. Three core construction conditions: Output positive emotional signals (3 chat skills + long-term positive inner energy), block negative emotional interference, upgrade personal comprehensive value;
+                    <br>3. Three usable chat techniques: Curiosity hooks, disqualification playful teasing, scenario role-play; use moderately, never over-rely on routines;
+                    <br>4. Critical mindset rule: Faced with cold negative feedback, keep gentle firm stability to avoid falling into negative resonance loops; calm emotional self-control highlights maturity and charm;
+                    <br>5. Extended application: Offline environment, venue, time and atmosphere all adjust emotional resonance effects, usable for date and offline communication layout.
+                </p>
+                <p class="text-p">
+                    Master emotional resonance to solve the common problem of "interesting opening but boring follow-up topics", steadily deepen mutual familiarity during the getting-to-know-each-other stage, and lay solid emotional groundwork for the attraction emotion in the screening stage.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List | Master Social Skills</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+        }
+
+        /* 导航栏 完全复用首页样式 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 页面头部标题区 */
+        .page-header {
+            padding: 4rem 5% 2rem;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: clamp(1.8rem, 8vw, 3rem);
+            color: #ffffff; /* 主体文字改为白色 */
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+    
+        }
+
+        .page-header p {
+            color: var(--text-body);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        /* 课程容器 */
+        .courses-container {
+            padding: 2rem 5% 6rem;
+        }
+        .course-category {
+            margin-bottom: 4rem;
+        }
+        .course-category h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* 课程网格卡片布局 */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .course-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(82, 211, 190, 0.18);
+        }
+        .card-banner {
+            height: 180px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+            position: relative;
+        }
+        .tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .tag-free {
+            background: #10B981;
+            color: white;
+        }
+        .tag-premium {
+            background: #F59E0B;
+            color: white;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-body h3 {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+        }
+        .card-body p {
+            color: var(--text-body);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.88rem;
+            color: var(--text-body);
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+        .start-course-btn {
+            width: 100%;
+            margin-top: 1.2rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .start-course-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 响应式 */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <!-- 导航栏和首页一致 -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <!-- 页面标题 -->
+    <div class="page-header">
+        <h1 class="main-hero-title-glow">Systematic Social Skills Training</h1>
+        <p class="desc-text">This course offers systematic training in conversational and social skills, equipping you to handle a wide range of social situations.
+        <br>
+        <span class="fluorescent-red">Want to become a social pro? Start right now!</span>
+        </p>
+
+        <a href="./index.html" class="back-home">← Back to Homepage</a>
+    </div>
+
+    <!-- 课程列表主体 -->
+    <div class="courses-container">
+        <!-- 分类1：免费入门课程（仅心态认知，无任何实操技巧） -->
+        <div class="course-category">
+            <h2>Free Beginner Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>💪</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>How to attract others? ATTRACTION!</h3>
+                        <p>The foundation of social relationships is all about attraction. Learn what social attraction is and how to attract others in social situations.</p>
+                        <div class="course-meta">
+                            <span>1 Lesson</span>
+                            <span>⭐⭐</span>
+                        </div>
+                        <!-- 点击跳转免费详情页 -->
+                        <a href="How-to-attract-others1.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>❤️</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Invincible mindset-Gentle yet firm!</h3>
+                        <p>Mindset is the beginning of everything. The key is to stick to being “gentle” and “firm,” which will make others naturally want to get close to you. </p>
+                        <div class="course-meta">
+                            <span>1 Lesson</span>
+                            <span>⭐⭐⭐⭐</span>
+                        </div>
+                        <!-- 点击跳转免费详情页 -->
+                        <a href="Invincible-mindset2.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>🎯</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>The purpose of the conversation</h3>
+                        <p>To ensure social interactions unfold as you envision, you must approach conversations with a clear and proper purpose.</p>
+                        <div class="course-meta">
+                            <span>1 Lesson</span>
+                            <span>⭐⭐⭐</span>
+                        </div>
+                        <!-- 点击跳转免费详情页 -->
+                        <a href="The-purpose-of-the-conversation3.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>📜</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Eight Rules of Conversation</h3>
+                        <p>These eight core principles serve as a benchmark for evaluating your conversation. If you have indeed violated them, it means you made a mistake in the way you were chatting and need to correct it promptly. However, if you haven't violated these principles, the issue likely lies elsewhere—not in the conversation itself—and you will need a more comprehensive analysis to identify the root cause.</p>
+                        <div class="course-meta">
+                            <span>2 Lessons</span>
+                            <span>⭐⭐⭐⭐</span>
+                        </div>
+                        <a href="Eight-Rules-of-Conversation4.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+
+                <!-- 发散聊天思维+简化回复四部曲 付费 -->
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>📱</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>How should I respond in conversations?</h3>
+                        <p>This course comprises three modules—building a repertoire of conversation topics, crafting effective responses, and developing a divergent mindset for conversation—laying the foundation for transforming from an introvert into a social pro.</p>
+                        <div class="course-meta">
+                            <span>3 Lessons</span>
+                            <span>⭐⭐⭐⭐</span>
+                        </div>
+                        <a href="How-to-respond5.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+
+                <!-- 社交五步曲完整大师课 -->
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>📝</span>
+                        <span class="tag tag-free">Free</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Three Stages of Conversation</h3>
+                        <p>Just as relationships deepen over time, conversations should also progress from superficial to profound; this lesson will outline the proper stages of conversation to help us successfully develop the relationship.</p>
+                        <div class="course-meta">
+                            <span>1 Lesson</span>
+                            <span>⭐⭐⭐⭐</span>
+                        </div>
+                        <a href="Three-Stages-of-Conversation6.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <!-- 分类2：付费全套系统课程（包含冷读、发散思维、回复四部曲+高阶全套体系） -->
+        <div class="course-category">
+            <h2>Premium Full System Courses</h2>
+            <div class="course-grid">
+                <!-- 冷读基础逻辑 付费 -->
+                
+                <!-- 五层情绪沟通系统 -->
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>5️⃣</span>
+                        <span class="tag tag-premium">Premium</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>The Five-Step Conversation Method</h3>
+                        <p>Moving from being strangers to finally reaching a mutual understanding is a process—so what should you do at each stage of the conversation? Here is a detailed guide!</p>
+                        <div class="course-meta">
+                            <span>5 Lessons</span>
+                            <span>⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <a href="./premium/Five-Step-Conversation-Method7.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+
+                <!-- 高阶场景实战与长期训练方案 -->
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>🔥</span>
+                        <span class="tag tag-premium">Premium</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Emotional Communication Method</h3>
+                        <p>The emotional communication method represents a higher level of knowledge; it is an advanced practical technique that complements the "Five-Step Conversation Method" and serves as the core driver of the "Five-Step Social Interaction Method." Let us continue to advance together!</p>
+                        <div class="course-meta">
+                            <span>5 Lessons</span>
+                            <span>⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <a href="./premium/Emotional-Communication-Method8.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="card-banner">
+                        <span>💯</span>
+                        <span class="tag tag-premium">Premium</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>“Graduation ceremony?” — It's not over yet!</h3>
+                        <p>Congratulations on making it this far! In this lesson, we'll wrap things up—much like the sweeping wide shot at the end of a movie that brings everything into full view.</p>
+                        <div class="course-meta">
+                            <span>1 Lessons</span>
+                            <span>👑</span>
+                        </div>
+                        <a href="./premium/Graduation-ceremony.html" class="start-course-btn">View Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

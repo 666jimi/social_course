@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 7: The Chat Map — Three Progressive Conversation Stages | Social Attraction Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* Global Navigation Consistent with All Pages */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Universal Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Reading Wrapper */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .third-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight:700;
+            margin:2rem 0 0.8rem;
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        .text-green-highlight {
+            color: var(--primary-dark);
+            font-weight:700;
+        }
+        /* Case Card Style */
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin:1.5rem 0;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size:1.1rem;
+        }
+        /* Three Stage Chat Map Summary Card */
+        .chat-map-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+        .stage-item {
+            font-size:1.1rem;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:0.8rem;
+        }
+        /* Peripheral Topic Seven Categories Card */
+        .topic-category-card {
+            background: #ecfdf5;
+            border: 1px solid var(--primary-dark);
+            border-radius: 12px;
+            padding:1.5rem;
+            margin:1.5rem 0;
+        }
+        /* Final Summary Block */
+        .final-summary-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Unified Top Navigation -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Breadcrumb Link Chain -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="Three-Stages-of-Conversation6.html">Course Detail</a>
+            <span>/</span>
+            <span>Lesson 7: The Chat Map — Three Progressive Conversation Stages</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">Course Introduction — The Chat Map</h1>
+
+            <p class="text-p">
+                The "Chat Map" is a core concept in our conversations. If you've successfully completed the previous training sessions, your conversational skills should have improved dramatically. Many students have told me: "Teacher, I now understand my conversational goals, I've corrected past mistakes, my ability to find topics has improved significantly, and my responses are more natural and confident. However, my conversations seem to lack structure; I'm just talking based on intuition. Sometimes I'm in a good mood and the conversation goes very well, but other times, even after talking for a long time and covering many topics, I just don't feel like we've reached a deeper level. What's going on?"
+            </p>
+            <p class="text-p">
+                Actually, these problems are very common at this stage because you haven't finished learning. The reason for this is simple: you haven't learned the true conversation structure. All conversations follow fixed progressive patterns, not random casual chatter. Today’s lesson splits all romantic chats from superficial to intimate into three clear progressive stages, known as the complete Chat Map.
+            </p>
+            <div class="chat-map-card">
+                <p class="stage-item">Stage 1: Peripheral Topic Stage — Eliminate defensiveness, build basic familiarity</p>
+                <p class="stage-item">Stage 2: Personal Topic Stage — Exchange personal life, generate mutual attraction</p>
+                <p class="stage-item">Stage 3: Shared Topic Stage — Strengthen joint connection, escalate ambiguous intimate atmosphere</p>
+            </div>
+            <p class="text-p text-red-highlight">
+                Core universal chat taboo: Do not jump ahead to deep private or intimate topics when you are still in the early unfamiliar stage. This crosses the relationship boundary and makes you look low-value and awkward.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Bad Example: Crossing Stage Boundary Too Early</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Chat log:<br>
+                    Her: Hi, I’m heading out for drinks.<br>
+                    You: You’re so lucky. I’m alone in New York, sometimes I can’t even find a close friend to drink with.
+                </p>
+                <p class="text-p">Result: She only replies with awkward ellipses. She feels confused and uncomfortable — you barely know each other yet you pour out lonely personal vulnerability, which signals you lack social connections and emotional stability.
+                </p>
+            </div>
+
+            <h2 class="sub-title">Stage 1: The Peripheral Conversation Stage</h2>
+            <p class="text-p">
+                This is the mandatory opening phase for any new social interaction. Its core purpose is to break the ice, eliminate the stranger’s natural wariness, and build relaxed basic familiarity before touching personal content. Strangers instinctively guard private information; jumping straight to personal questions without peripheral small talk will trigger suspicion and rejection.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Extreme Example: How Peripheral Small Talk Breaks Defensiveness</div>
+                <p class="text-p" style="margin-bottom:0;">Goal: Ask a stranger’s parent age while queuing for breakfast.<br>
+                Wrong direct approach: "Hey bro, how old is your mom?" — He will be alarmed and suspicious.<br>
+                Correct peripheral lead-in: Borrow a lighter → chat about cold weather → talk about family breakfast responsibilities → mention parental aging → naturally ask his parents’ age without awkwardness.</p>
+            </div>
+            <p class="text-p">
+                Peripheral topics are light, low-stakes trivial daily content that no one will take offense at. I’ve sorted 7 core peripheral topic categories for dating chats:
+            </p>
+            <div class="topic-category-card">
+                <p class="method-item">7 Peripheral Topic Directions: Food, Drinks, Fun Activities, Travel, Shopping, Entertainment, Hot Gossip</p>
+            </div>
+            <p class="text-p">
+                Sample drink peripheral topics: New cocktail bar, specialty coffee beans, limited milk tea new flavors.<br>
+                Sample fun activity peripheral topics: Stand-up comedy shows, funny daily trivialities and small accidents.<br>
+                Sample travel peripheral topics: Global warming risks to Venice, weekend short trip recommendations.
+            </p>
+            <p class="text-p">
+                Stage core goal: Create relaxed, comfortable interaction atmosphere to remove emotional distance between you two.
+            </p>
+
+            <h2 class="sub-title">Stage 2: The Personal Conversation Stage</h2>
+            <p class="text-p">
+                Once the girl sends consistent positive feedback during peripheral topic chats, move forward to this second stage immediately. Staying stuck on superficial small talk will make the conversation stagnate and fade, and the relationship cannot deepen.
+            </p>
+            <p class="text-p">
+                Core stage function: Exchange personal life details to build mutual attraction and mutual understanding. Two key tasks:
+                <br>1. Show your own positive, high-quality lifestyle and values to generate attraction;
+                <br>2. Take initiative to learn her work, hobbies, life experiences to make her feel valued and secure.
+            </p>
+            <p class="text-p">
+                Suitable personal topics: Career, hobbies, daily routine, education background, past travel experiences, personal life plans. Only share positive traits here; avoid complaining about misfortune, bad tempers, or unflattering flaws.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Why Understanding Each Other Builds Relationship Security</div>
+                <p class="text-p" style="margin-bottom:0;">Scenario: You confess "I like you" without knowing anything about her.<br>
+                Her inner thought: He only likes my appearance, he knows nothing about my personality — this superficial crush is unreliable and irresponsible.</p>
+                <p class="text-p">The same logic applies to men: if a woman rushes to ask you out before learning your basic situation, you will instinctively suspect hidden motives or risks.</p>
+            </div>
+            <p class="text-p">
+                Mutual attraction is fully formed in this stage. After both sides fully understand each other and maintain positive interest, you can advance to the final shared topic stage.
+            </p>
+
+            <h2 class="sub-title">Stage 3: The Shared Topic Stage</h2>
+            <p class="text-p">
+                The core task of this stage is to strengthen exclusive emotional connection between you two, deepen ambiguity, and push the relationship toward offline meetings or formal dating status. Shared topics refer to all content related to your unique two-person bond.
+            </p>
+            <p class="text-p">
+                Typical shared topic categories:
+                <br>1. Future joint plans: Eating, drinking, traveling, hanging out together;
+                <br>2. Emotional outlook: Views on love, ideal partner standards, expected long-term lifestyle;
+                <br>3. Intimate ambiguous private feelings: Your unique impressions of each other, exclusive nicknames, offline date arrangements.
+            </p>
+            <p class="text-p">
+                This stage is the highest level of online chat escalation. You can lock in specific date times, use soft ambiguous language, and clearly mark the exclusive connection between you two, completing the transition from ordinary acquaintances to potential lovers.
+            </p>
+
+            <div class="final-summary-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">Full Lesson Final Summary: The Complete Chat Map Logic</h2>
+                <p class="text-p text-green-highlight">
+                    All social conversations (dating, friendship, business) follow this three-stage progressive Chat Map rule:
+                </p>
+                <p class="text-p">
+                    1. Peripheral Stage: Light universal small talk to eliminate stranger defensiveness, lay basic comfort foundation.<br>
+                    2. Personal Stage: Exchange positive personal life content, build mutual attraction and emotional security.<br>
+                    3. Shared Stage: Talk about two-person joint plans & inner feelings, strengthen exclusive bond and escalate ambiguous intimacy.
+                </p>
+                <p class="text-p">
+                    Follow this step-by-step progressive chat map in all interactions, never skip stages to avoid awkwardness and low-value impression. This structured conversation framework solves the common problem of "chatting for hours without deepening the relationship" and greatly improves your social efficiency.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

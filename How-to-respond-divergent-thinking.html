@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 6: Divergent Conversational Thinking | Social Attraction Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* Global Navigation Consistent with All Pages */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Universal Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Reading Wrapper */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .third-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight:700;
+            margin:2rem 0 0.8rem;
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        .text-green-highlight {
+            color: var(--primary-dark);
+            font-weight:700;
+        }
+        /* Case Card Style */
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin:1.5rem 0;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size:1.1rem;
+        }
+        /* Four Divergent Thinking Methods Summary Card */
+        .method-summary-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+        .method-item {
+            font-size:1.1rem;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:0.8rem;
+        }
+        /* Linear VS Divergent Thinking Contrast Card */
+        .contrast-card {
+            background: #ecfdf5;
+            border: 1px solid var(--primary-dark);
+            border-radius: 12px;
+            padding:1.5rem;
+            margin:1.5rem 0;
+        }
+        /* Final Summary Block */
+        .final-summary-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Unified Top Navigation -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Breadcrumb Link Chain -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="How-to-respond5.html">Course Detail</a>
+            <span>/</span>
+            <span>Lesson 6: Divergent Conversational Thinking</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">Course Introduction — Divergent Conversational Thinking</h1>
+
+            <p class="text-p">
+                Many students get stuck when choosing their responses. They say, "Teacher, I know exactly which direction to take, but my vocabulary is too limited. I can't think of good words, and my mind often goes blank. What should I do?" This lesson will solve that problem. Often, it's not a lack of knowledge, but rather an inability to access your past knowledge. This lesson will teach you a way of thinking, a pathway. It will guide you to quickly connect your past experiences and find a conversation style that suits you. The conversational thinking we'll discuss in this lesson is called divergent thinking. If you master this technique, I guarantee you'll never be at a loss for words in any situation.
+            </p>
+
+            <h2 class="sub-title">What is divergent conversational thinking?</h2>
+            <p class="text-p">
+                A classic online joke perfectly shows the gap between linear male thinking and network-style divergent female thinking:
+            </p>
+            <div class="case-card">
+                <div class="case-head">Thinking Gap Joke Example</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Honest man: Why do women like smooth-talking guys instead of honest men like us?<br>
+                    Woman: You men just don’t get romance. Come to my place tonight and I’ll explain slowly.<br>
+                    Honest man: No, explain it to me right now!
+                </p>
+            </div>
+            <p class="text-p">
+                Men’s natural linear thinking is narrow and single-tracked, only launching direct causal questions based on the other person’s sentence, which quickly makes chats boring. Women’s divergent network thinking can freely associate multiple irrelevant but related topics, making conversations lively and long-lasting. If you learn this divergent associative logic, girls will find chatting with you far more interesting.
+            </p>
+            <div class="contrast-card">
+                <p class="method-item">Linear Thinking (Bad, Rigid Interview Style)</p>
+                <p class="text-p" style="margin-bottom:1rem;">
+                    Girl: I’m planning a trip to Hawaii soon.<br>
+                    Linear replies: Are you going alone? What fun spots are there? How many days will you stay? Is it hot there?
+                </p>
+                <p class="method-item">Divergent Relevant Association Thinking (Good, Rich & Relaxed)</p>
+                <p class="text-p">
+                    1. I saw you saved lots of travel guides, you’ve been planning this trip for ages haven’t you?<br>
+                    2. Hawaii sounds amazing, I also want to visit someday, maybe we can go together later.<br>
+                    3. You’re swamped with work yet still find time for travel, I’m so jealous of you.
+                </p>
+            </div>
+            <p class="text-p">
+                The core of divergent thinking training is improving your associative ability. Ordinary daily conversation only uses single causal linear logic, while divergent thinking expands all relevant angles related to the topic to create countless reply options. Even introverted people can master this skill through systematic training.
+            </p>
+
+            <h2 class="sub-title">Four Core Methods to Master Divergent Conversation Thinking</h2>
+            <div class="method-summary-card">
+                <p class="method-item">1. Word-Splitting Method — Break sentences into independent keywords for multi-angle association</p>
+                <p class="method-item">2. Top-Down-Shift Method — Expand via higher category, lower category, parallel category association</p>
+                <p class="method-item">3. Association Method — Extend keywords to related objects, facts, scenes, knowledge points</p>
+                <p class="method-item">4. Feeling and Evaluation Method — Directly express your inner emotional reaction to her words</p>
+            </div>
+
+            <h3 class="third-title">Method 1: Word-Splitting Method</h3>
+            <p class="text-p">
+                Split the full sentence into separate core keywords, then create independent replies based on each keyword to multiply your reply choices. After generating multiple options, screen the most suitable one according to the four-step reply process (relationship stage → hidden intention → reply direction → wording).
+            </p>
+            <div class="case-card">
+                <div class="case-head">Word-Splitting Practical Example</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Chat log:<br>
+                    You: What are you doing?<br>
+                    Her: Lying down, why did you suddenly think of me?
+                </p>
+                <p class="text-p">Core split keywords: suddenly, thought of, you, me</p>
+                <p class="text-p">
+                    • Keyword "suddenly": I didn’t suddenly think of you, I thought about you while eating chocolate yesterday.<br>
+                    • Keyword "thought of": It’s not just thinking, I also want to meet you.<br>
+                    • Keyword "you": Does lots of people often think about you?<br>
+                    • Keyword "me": I wasn’t thinking of you, I just wondered if your dog Wangcai gained weight.
+                </p>
+                <p class="text-p" style="margin-bottom:0;">Even only mastering this single method can completely eliminate the problem of blank minds while chatting.</p>
+            </div>
+
+            <h3 class="third-title">Method 2: Top-Down-Shift Method (Core Divergent Expansion Tool)</h3>
+            <p class="text-p">
+                Extract a core keyword from the sentence, then expand thinking from three category dimensions: Top-level (higher general category), Bottom-level (sub-category branches), Shift (parallel same-category alternatives). Each dimension generates new reply angles.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Top-Down-Shift Practical Example (Keyword: Car)</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Original sentence: I plan to drive home for Chinese New Year this year.
+                </p>
+                <p class="text-p"><strong>1. Top-level association (higher category: transportation)</strong><br>Reply: Why drive yourself? Are commercial planes not good enough for you now?</p>
+                <p class="text-p"><strong>2. Bottom-level association (sub-category: old second-hand car)</strong><br>Reply: Aren’t you worried your beat-up old car breaks down halfway on the highway?</p>
+                <p class="text-p" style="margin-bottom:0;"><strong>3. Shift parallel association (same category: truck)</strong><br>Reply: You have so much luggage, even a truck couldn’t carry all your stuff, no wonder you drive yourself.</p>
+            </div>
+            <p class="text-p">
+                Combine this method with word-splitting: every keyword can expand into 3 reply directions, one single sentence can generate over 12 different reply ideas, and you will never run out of things to say.
+            </p>
+
+            <h3 class="third-title">Method 3: Association Method (Advanced Expansion Skill)</h3>
+            <p class="text-p">
+                On the basis of word splitting & top-down shift, further associate keywords with related animals, popular science facts, life scenes, cultural knowledge, to create unique, non-cliché replies that make you feel interesting and memorable.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Association Method Practical Example</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Her reply: Still asleep, staying in bed. Core keyword: sleeping
+                </p>
+                <p class="text-p">
+                    • Animal association (koala): Still sleeping? Even koalas are more hardworking than you.<br>
+                    • Science data association: Statistics say sleep takes up 1/3 of human lifespan, you’re pushing that ratio higher today.
+                </p>
+            </div>
+
+            <h3 class="third-title">Method 4: Feeling and Evaluation Method</h3>
+            <p class="text-p">
+                Different from the first three analytical expansion methods. Ignore dissecting her words, directly output your instant inner emotions after reading her message, shift the chat focus to emotional communication. Most effective when the girl is emotional, upset or irritable, where logical expansion methods fail to work well.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Feeling Evaluation Practical Example</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Her sentence: Why are you so annoying?
+                </p>
+                <p class="text-p">Direct emotional reply: Why are you talking to me so sharply all of a sudden?</p>
+                <p class="text-p" style="margin-bottom:0;">Instead of debating or explaining her complaint, you express your inner feeling about her tone, guiding the conversation to emotional exchange naturally.</p>
+            </div>
+
+            <div class="final-summary-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">Full Lesson Final Summary & Training Advice</h2>
+                <p class="text-p text-green-highlight">
+                    Four complete divergent thinking reply systems for endless chat material:
+                </p>
+                <p class="text-p">
+                    1. Word-Splitting: Split sentences into independent keywords to unlock multiple reply angles.<br>
+                    2. Top-Down-Shift: Expand topics via higher category, sub-category, parallel category three dimensions.<br>
+                    3. Association Method: Link keywords to animals, data, life scenes to create unique interesting replies.<br>
+                    4. Feeling Evaluation Method: Directly share your inner emotional response for emotional communication.
+                </p>
+                <p class="text-p">
+                    Mastering these four thinking frameworks completely solves the "blank mind, limited vocabulary" problem most beginners face. Understanding the theory is simple, but fluent application requires daily training: extract keywords during every chat, brainstorm multiple reply options, review chat logs after each conversation to practice divergent association. Consistent daily practice will drastically improve your conversational charm within three months.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

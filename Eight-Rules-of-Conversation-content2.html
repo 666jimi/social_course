@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 3: Eight Core Conversation Principles | Social Attraction Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* Global Navigation Consistent with All Pages */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Universal Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Reading Wrapper */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .rule-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight:700;
+            margin:2rem 0 0.8rem;
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        .text-green-highlight {
+            color: var(--primary-dark);
+            font-weight:700;
+        }
+        /* Case Card Style */
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin:1.5rem 0;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+            font-size:1.1rem;
+        }
+        /* Full 8 Rules Summary Card */
+        .full-rule-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+        .rule-item {
+            font-size:1.1rem;
+            font-weight:600;
+            color:var(--primary-dark);
+            margin-bottom:0.8rem;
+        }
+        /* End Summary Block */
+        .final-summary-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Unified Top Navigation -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Breadcrumb Link Chain -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="Eight-Rules-of-Conversation4.html">Course Detail</a>
+            <span>/</span>
+            <span>Lesson 3: Eight Core Conversation Principles</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">Four Advanced Rules of Conversation</h1>
+            <p class="text-p">
+                Last lesson we discussed four basic rules of conversation. If you've been diligently following them, your conversational skills have likely improved. In this lesson, I'll continue with four advanced rules that will make you more masculine and charming in conversations.
+            </p>
+
+            <h2 class="rule-title">Rule 5: Keep Your Words Concise</h2>
+            <p class="text-p">
+                Most beginners, perhaps due to nervousness, tend to talk a lot during conversations, often going on and on, trying to explain every point clearly, afraid the other person won't understand. However, this behavior doesn't make you seem clear-headed; instead, it makes you appear verbose and lacking in masculine flair. Therefore, a crucial principle in conversation training is to send only one message at a time, keeping it as short as possible, ideally no more than two lines. When your words are free of unnecessary words, your expression feels concise and powerful.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Concise Expression Example</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Question: Where did you go today?<br>
+                    Long bad reply: I went to Walmart to buy daily supplies.<br>
+                    Concise good reply: Walmart.
+                </p>
+                <p class="text-p" style="margin-bottom:0;">As long as the core meaning is delivered, cut redundant words. Concise speech makes you look calm, confident and attractive, not aloof as many beginners worry.
+                </p>
+            </div>
+
+            <h2 class="rule-title">Rule 6: Staying in Sync</h2>
+            <p class="text-p">
+                We all know that the most important thing in conversation is emotion, but emotion is invisible and intangible. The rule of staying in sync is the core skill to build smooth emotional resonance. Staying in sync means matching the other person’s reply speed and text length, synchronizing both time rhythm and content scale.
+            </p>
+            <p class="text-p">
+                Time synchronization: If they reply instantly, you reply quickly; if they reply slowly after long waiting, do not rush to send continuous messages. Content synchronization: If their reply is only a few short sentences, avoid sending a long paragraph as a response. Matching their chatting rhythm lets them feel fully understood and accepted, eliminating invisible pressure during communication.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Negative Out-of-Sync Case</div>
+                <p class="text-p" style="margin-bottom:0;">
+                    Scenario: The girl is busy working, replies you late with a very short casual message.<br>
+                    Wrong action: You send multiple long paragraphs instantly, chasing her to reply immediately. She will feel heavy chatting pressure and label you as inconsiderate.
+                </p>
+                <p class="text-p" style="margin-bottom:0;">
+                    Correct action: Slow down your reply pace, send short casual lines, even take the initiative to tell her "I’m not in a hurry, focus on your work first". This reveals high emotional intelligence and brings strong comfortable feelings to others.
+                </p>
+            </div>
+
+            <h2 class="rule-title">Rule 7: Don't Actively Seek the Other Person's Opinion</h2>
+            <p class="text-p">
+                Many men mistakenly think asking for the girl’s opinions shows respect, but this habit weakens your masculine leading aura. Women’s natural mate selection psychology prefers men who hold independent decision-making power; they judge your temperament, taste and sense of responsibility through your active choices.
+            </p>
+            <div class="case-card">
+                <div class="case-head">Two Date Invitation Comparison</div>
+                <p class="text-p"><strong>Weak version (Seeking opinion):</strong> Shall we go out this weekend? Which restaurant do you want to eat? What movie do you prefer?</p>
+                <p class="text-p"><strong>Attractive version (Direct decision):</strong> Let’s have barbecue and watch a movie this weekend.</p>
+                <p class="text-p" style="margin-bottom:0;">Compromise solution: Narrow the options down to two choices for her to pick, for example "Japanese food or barbecue this weekend?" If she says either is fine, firmly choose your own preference.</p>
+            </div>
+
+            <h2 class="rule-title">Rule 8: Don't Argue & Never Make Excuses</h2>
+            <p class="text-p">
+                In the mindset lesson we learned the firm principle: no explaining, no fawning, no agonizing. This rule expands on that core point. When you say something wrong or misunderstand the other person, do not panic and make all kinds of excuses to defend yourself. Constant excuses make you look irresponsible and low-value.
+            </p>
+            <p class="text-p">
+                The correct handling for mistakes: Simply give a sincere brief apology, then avoid repeating the error later. For example, "I’m sorry, I shouldn’t have said that." The mistake has already happened; excuses cannot reverse the fact, they only show you care too much about your own image rather than the other person’s feelings. High-value men take responsibility for their words calmly, without evasion or over-explanation.
+            </p>
+
+            <div class="final-summary-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">Full Lesson Final Summary</h2>
+                <p class="text-p">
+                    After finishing these two segments, we have fully covered all eight core conversation principles. If you strictly follow these eight rules in daily chatting, you will avoid most common rookie mistakes.
+                </p>
+                <p class="text-p">
+                    If the other party still gives cold or unsatisfactory replies even after you fully comply with all eight rules, the root problem does not lie in your chatting wording itself. Common hidden reasons include misjudged relationship window, missed escalation timing, mismatched personal value gap, etc. These complex scenarios require targeted case analysis and one-on-one consultation.
+                </p>
+                <p class="text-p text-green-highlight" style="margin-bottom:0;">
+                    Master these eight universal chat standards to build stable, masculine and attractive communication habits, and steadily improve your social charm in all interpersonal scenarios.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

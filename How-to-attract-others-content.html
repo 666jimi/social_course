@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to attract others?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --red-highlight: #dc2626;
+            --green-free: #10B981;
+        }
+
+        /* 全局导航 和列表/详情页完全统一 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* 面包屑导航 */
+        .breadcrumb {
+            padding: 2rem 0;
+        }
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--text-body);
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* 课程阅读主体 */
+        .read-wrap {
+            max-width: 900px;
+            margin: 0 auto 6rem;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+        .sub-title {
+            font-size: 1.45rem;
+            color: var(--text-dark);
+            margin: 3rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--gray-light);
+        }
+        .text-p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-body);
+            margin-bottom: 1.6rem;
+        }
+        .text-red-highlight {
+            color: var(--red-highlight);
+            font-weight: 700;
+        }
+        /* 吸引力公式卡片 */
+        .formula-card {
+            background: #ECFDF5;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.8rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .formula-text {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        /* 对话案例双栏卡片 */
+        .case-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .case-card {
+            background: #F9FBFB;
+            border-left: 4px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        .case-head {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+        /* 底部行动引导区块 */
+        .action-block {
+            background: linear-gradient(135deg, rgba(82, 211, 190, 0.12), rgba(32, 127, 76, 0.12));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-top: 3.5rem;
+        }
+
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.8rem;
+            }
+            .case-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* 上下课时导航容器 */
+        .lesson-nav-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            margin: 3rem 0 2rem;
+        }
+        /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
+        .lesson-nav-btn {
+            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            padding: 0.8rem 1rem;
+            border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
+            text-decoration: none;
+            /* 左右浅→深薄荷绿渐变，和图片完全匹配 */
+            background: linear-gradient(90deg, #38e6c9, #41cd82);
+            color: #ffffff;
+            text-align: center;
+            transition: opacity 0.25s ease;
+        }
+        /* 悬浮轻微透明效果 */
+        .lesson-nav-btn:hover {
+            opacity: 0.9;
+        }
+        /* 文字层级 */
+        .lesson-nav-btn span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .lesson-nav-btn small {
+            font-size: 0.82rem;
+            opacity: 0.92;
+        }
+        /* 移动端自动竖排 */
+        @media (max-width:768px) {
+            .lesson-nav-wrap {
+                flex-direction: column;
+            }
+            .lesson-nav-btn {
+                width: 100%;
+                flex: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="course.html">Course</a>
+            <a href="#0">Contact the author</a>
+            <a href="login.html" class="nav-login-btn">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 面包屑导航链路 -->
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="course.html">Course</a>
+            <span>/</span>
+            <a href="How-to-attract-others.html">Course Detail</a>
+            <span>/</span>
+            <span>Full Lesson Text Content</span>
+        </div>
+
+        <div class="read-wrap">
+            <h1 class="main-title">How to attract others? </h1>
+
+            <p class="text-p">
+                Attraction isn't innate. In my past consulting career, I've discovered something quite alarming. People often say, "If this person likes me, I'll do anything; if this person doesn't like me, nothing I do will matter." You'll find these people harbor a belief that whether someone likes them or not is predetermined, something that happens before they even try. So, if someone doesn't like them, no matter how hard they try, it's useless; they're simply not meant to be, and there's nothing they can do.
+            </p>
+            <p class="text-p">
+                But if you think about it carefully, you'll find that this idea is illogical and a very weak way of thinking—the kind of thinking only a weak person would have, with a touch of fatalism. Strong people don't think like that. What is the way strong people think? Strong people think that everything happens for a reason; it can't be without logic, it can't be predetermined. If someone likes me, there must be a reason; if someone doesn't like me, there must be a reason. As long as I understand this reason, grasp this principle, I can become someone others like.
+            </p>
+            <p class="text-p">
+                A large part of the development of psychology over the years has been researching what makes one person attract another. Therefore, when we understand these things, we can change ourselves and become more attractive, thus making our social lives more fulfilling. Based on research in evolutionary psychology, we divide the reasons for human attraction into two values: survival value and reproductive value.
+            </p>
+            <p class="text-p">
+                Living a better and more decent material life is the survival value. The reproductive value refers to carrying better genes, enabling you to produce more outstanding offspring who are better able to survive.
+            </p>
+            <p class="text-p">
+                But what makes humans human is that they possess not only animalistic traits but also humanity. What distinguishes humans from animals is that humans have developed consciousness; they can think about the current situation and environment, making more sophisticated judgments and choices.
+            </p>
+            <p class="text-p">
+                In contemporary times, we are already abundant in food and clothing, and people are beginning to pursue higher-level spiritual satisfaction. Therefore, a third value has emerged: <span class="text-red-highlight">emotional value, a value unique to the human species</span>.
+            </p>
+            <p class="text-p">
+                Survival value, reproductive value, and emotional value are the three core values of attraction.
+            </p>
+
+            <!-- 吸引力公式卡片 -->
+            <div class="formula-card">
+                <p class="formula-text">(Survival value + Reproductive value) * Emotional value = Your attractiveness</p>
+            </div>
+
+            <p class="text-p">
+                Many wealthy people are annoying; being around them makes you feel uncomfortable and unhappy. Conversely, many people who are not wealthy or handsome are very pleasant to be around; you feel their personal charm. These are examples of how emotional value amplifies and diminishes attraction. This is the core of my social attraction training camp.
+            </p>
+            <p class="text-p">
+                Your appearance is difficult to change, and your wealth is difficult to change in a short time. Only emotional value is something we can learn and master, instantly changing our lives. The solution to all these problems is to enhance your emotional value, your personal charm, so that others like you for who you are, not for your money or appearance. Money and looks only generate basic interest; true, deep attraction comes from your personality. This is your most stable, powerful, and lifelong asset.
+            </p>
+
+            <h2 class="sub-title">Attracting Others in Social Interactions: Building Your Value Framework</h2>
+
+            <p class="text-p">
+                Having discussed attraction, let's talk about what social attraction is, and why this course is called "Social Attraction." Because the process of attraction between people is actually reflected in your social interactions. If you lie in bed at home every day, you won't be attractive to others; you only attract them through genuine interaction. In this process, you can create attraction.
+            </p>
+            <p class="text-p">
+                All the social scenarios discussed in this course are conversation scenarios. Why conversation scenarios? Because conversation is the bond of all social relationships. It permeates all social interactions, whether you meet a stranger online and gradually become familiar with them, or you meet a girl and go on a date, sitting together for coffee or dinner, or you're looking for a job interview, need help from a friend, or it's a girl's birthday and you need to give her a gift. All of these require verbal expression, communication, and conversation. Therefore, this course is based on conversation, teaching you how to become more attractive in social interactions.
+            </p>
+            <p class="text-p">
+                What do you consider good conversation? What kind of conversation can make you attractive in social situations? Is it some clever talking techniques? Is it some witty sweet nothings? Are it some clever replies? Is it your ability to master a multitude of topics? Actually, none of these! The true charm of chatting isn't in the words themselves, but in communicating with the other person's subconscious through the replies between the lines, reaching a consensus.
+            </p>
+            <p class="text-p">
+                For a simple example, imagine you meet a girl you like and you're chatting with her. You talk about your views on relationships, and she says, "I want to find a mature and considerate boyfriend." How would you reply? Let's assume there are two guys.
+            </p>
+
+            <!-- 两种回复对比卡片 -->
+            <div class="case-row">
+                <div class="case-card">
+                    <div class="case-head">Response 1 — Low Attraction Type</div>
+                    <p>Oh, I am very considerate. I pay great attention to detail, I'm very clean, I cook a lot of delicious food, and I do housework. Look at the house I just cleaned yesterday, it's spotless, isn't it? Being with me, I guarantee I'll take good care of you and make you plump and healthy.</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-head">Response 2 — High Attraction Type</div>
+                    <p>Girls your age usually pursue romance, but you seem much more mature than them.</p>
+                </div>
+            </div>
+
+            <p class="text-p">
+                Now, I ask you, which guy's response do you find more attractive? I believe you can sense that the second guy's response is clearly more attractive. But why? The first guy is good at housework, very clean, and a great cook—clearly, he meets more of a girl's standards. So why isn't he as attractive as the second guy?
+            </p>
+            <p class="text-p">
+                This is what I mean by the true charm of conversation not lying in the words themselves. Let's say the girl says she wants a mature and considerate boyfriend. This need is very obvious. The second guy's response is much more mature and considerate than the first.
+            </p>
+            <p class="text-p">
+                First, what does maturity mean? A mature guy has inner strength; he doesn't rush to explain or prove himself to the other person. You can see the first guy's behavior—he tries hard to prove himself, while the second guy doesn't.
+            </p>
+            <p class="text-p">
+                Second, what does considerate mean? Considerateness isn't just about cleaning or cooking. These things are easy to achieve in modern society. We can hire a housekeeper or order takeout to keep the house clean and have a good meal. So what is true consideration? It's about understanding your inner needs. Obviously, the first guy completely ignored this. The second guy, however, directly pointed it out: he said, "I feel like you're much more mature than your peers."
+            </p>
+            <p class="text-p">
+                Question: how does the girl feel at this moment? Girls will feel, "This guy seems to understand me!" Right? And we all know that only by understanding someone's heart can one be truly considerate. So, it's obvious that the second guy, with just a simple sentence that had nothing to do with maturity and consideration, was able to make the girl vaguely sense that this man possessed mature and considerate qualities. That's where attraction begins—that's what makes an attractive conversation. There are no fancy words, but it precisely hits the other person's subconscious. It seems like nothing is being discussed, but the underlying exchange contains a wealth of information you can't see.
+            </p>
+            <p class="text-p">
+                This is what we call attraction in social situations. And if you consistently make these correct decisions in social interactions, your attraction will continuously increase, ultimately forming your personal charisma. This is something I often tell my students: What is chatting? Chatting isn't a set of techniques, chatting isn't a method; chatting is the main structure of your social interactions, a comprehensive presentation of your personal value.
+            </p>
+            <p class="text-p">
+                Conversations encompass your past thoughts, life experiences, and current feelings. If you're observant, you'll find that in social interactions, a few words from a valuable person can completely change your impression of them. Conversely, some people may seem agreeable on the surface, but their words reveal a lack of depth.
+            </p>
+            <p class="text-p">
+                If someone can grasp the fundamental logic of social interaction—breaking free from mental constraints—they can unlock a completely different life, a transformation perhaps beyond your wildest imagination. While later lessons will focus on conversation, the core aim is to use it as a springboard to understand the underlying logic of social interaction and develop your own value framework.
+            </p>
+            <p class="text-p">
+                And if you're currently a beginner, learning can bring you sudden insights and open up a whole new world. If you're already an expert, this course can also help you gain valuable insights, broaden your perspectives, and further enhance your skills.
+            </p>
+            <p class="text-p">
+                This course focuses on the emotional relationship between men and women. Many students ask me, "Teacher, I'm married or have a girlfriend, and I want to improve my communication with other people besides my partner, such as with colleagues or my boss. Can this course help me?" I can confidently tell you, of course, it can. First, you need to understand that the underlying logic of social interaction is universal. Although the course uses male-female relationships as examples, if you replace the protagonists with your brothers or colleagues, you'll find the principles are the same. By simply substituting and applying these examples, you can easily understand other social relationships.
+            </p>
+            <p class="text-p">
+                So why do we start with emotions? Because communication between men and women is one of the most difficult topics in the world. They have innate and huge differences in thinking. If you can socialize happily with your favorite male or female idols, easily understand what they are thinking, and give the right response, and even take the lead in your social relationship, then think about it, will it still be difficult to make your colleagues like you, your boss like you, and your friends like you?
+            </p>
+
+            <!-- 底部行动引导区块 -->
+            <div class="action-block">
+                <h2 class="sub-title" style="border:none; margin-top:0;">What are you waiting for? Take action!</h2>
+                <p class="text-p">
+                    So how do you correctly use this course? How can learning this course truly bring about change? Among the students I've mentored, some have progressed very quickly. But others haven't changed at all, continuing down the same old path. Most people in life have heard many principles, yet still can't live a good life. In our training system, you can't stop at just knowing; you must go from knowing to mastering.
+                </p>
+                <p class="text-p">
+                    So if you really want to change, you must first firmly believe in one thing: treat yourself as a practitioner and complete this course. This course isn't something you finish after just one listen. I will assign homework for each subsequent lesson. You must complete the homework according to the requirements, even exceeding the requirements. This is the correct way to use the entire course.
+                </p>
+                <p class="text-p">
+                    When you complete it, you will find that change has already quietly occurred within you. All the students I've mentored have changed in this way. Those who listened once and seemed to understand something, in the end, remained the same.
+                </p>
+                <p class="text-p">
+                    So, starting now, please become a practitioner. Train everything you learn from here into a habit, into an unconscious reaction that happens naturally without conscious thought. Then you'll find your social communication skills will be unparalleled. Ready? Let's begin.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Prev / Next Lesson Navigation -->
+    <div class="lesson-nav-wrap">
+    <a href="lesson-emotion-resonance-stage.html" class="lesson-nav-btn prev-btn">
+        <span>← Previous Lesson</span>
+        <small>Core Emotion 2 – Emotional Resonance</small>
+    </a>
+    <a href="lesson-emotion-attraction-stage.html" class="lesson-nav-btn next-btn">
+        <span>Next Lesson →</span>
+        <small>Core Emotion 3 – Attraction</small>
+    </a>
+</body>
+</html>

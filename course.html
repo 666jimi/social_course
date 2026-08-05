@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course List | Master Social Skills</title>
+    <title>Course List | Systematic Social Skills Training</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,6 +224,77 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* 卡片整体容器，固定卡片宽度和圆角 */
+        .social-course-card {
+        width: 460px; /* 和页面其他课程卡片统一宽度 */
+        border-radius: 16px;
+        overflow: hidden; /* 整体圆角裁切图片边缘 */
+        background: #ffffff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* 顶部图片横幅容器 */
+        .card-banner {
+        position: relative;
+        height: 220px; /* 控制图片区块高度，按需加高/降低 */
+        }
+
+        /* 图片自适应铺满容器，杜绝拉伸 */
+        .card-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* 核心：等比裁切，填满容器不变形 */
+        display: block;
+        }
+
+        /* 右上角Free悬浮标签 */
+        .free-tag {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: #28c080;
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-weight: 600;
+        }
+
+        /* 下方文字内边距排版 */
+        .card-body {
+        padding: 24px 20px;
+        }
+        .card-body h2 {
+        font-size: 24px;
+        margin: 0 0 14px;
+        color: #111;
+        }
+        .card-body p {
+        color: #444;
+        line-height: 1.6;
+        font-size: 16px;
+        }
+        .card-meta {
+        display: flex;
+        justify-content: space-between;
+        margin: 18px 0;
+        padding-top: 12px;
+        border-top: 1px solid #eee;
+        }
+        .stars {
+        color: #f7c331;
+        font-size: 22px;
+        }
+        .view-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        background: #52D3BE; /* 你的薄荷绿主题色 */
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        }
         
 
     </style>
@@ -238,8 +309,8 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="course.html">Course</a>
-            <a href="#0">Contact the author</a>
-            <a href="login.html" class="nav-login-btn">Login</a>
+            <a href="contactauthor.html">Contact the author</a>
+            <a id="auth-link" href="login.html"></a>
         </div>
         <!-- 通用导航栏导航区域 -->
         <script>
@@ -249,7 +320,7 @@
             if (authLink) {
                 if (isLoggedIn) {
                     authLink.innerText = 'My Profile';
-                    authLink.href = 'profile.html';
+                    authLink.href = 'myprofile.html';
                 } else {
                     authLink.innerText = 'Login';
                     authLink.href = 'login.html';
@@ -279,7 +350,11 @@
             <div class="course-grid">
                 <div class="course-card">
                     <div class="card-banner">
-                        <span>💪</span>
+                        <!-- 核心：在这里替换为你的图片地址 -->
+                        <img class="course-banner-img" 
+                            src="images\How-to-Actually-Attract.png" 
+                            alt="How to Actually Attract Course Cover">
+                        <!-- 右上角免费标签 -->
                         <span class="tag tag-free">Free</span>
                     </div>
                     <div class="card-body">
@@ -295,7 +370,9 @@
                 </div>
                 <div class="course-card">
                     <div class="card-banner">
-                        <span>❤️</span>
+                        <img class="course-banner-img" 
+                            src="images\How-to-fix-a-negative-social-mindset.png" 
+                            alt="How to Fix a Negative Social Mindset Course Cover">
                         <span class="tag tag-free">Free</span>
                     </div>
                     <div class="card-body">
@@ -311,7 +388,9 @@
                 </div>
                 <div class="course-card">
                     <div class="card-banner">
-                        <span>🎯</span>
+                        <img class="course-banner-img" 
+                            src="images\What-is-the-purpose-of-chatting-to-build-attraction.png" 
+                            alt="What is the purpose of chatting to build attraction Course Cover">
                         <span class="tag tag-free">Free</span>
                     </div>
                     <div class="card-body">
@@ -327,7 +406,9 @@
                 </div>
                 <div class="course-card">
                     <div class="card-banner">
-                        <span>📜</span>
+                        <img class="course-banner-img" 
+                            src="images\Genuine-Conversation-Principles.png" 
+                            alt="Genuine Conversation Principles Course Cover">
                         <span class="tag tag-free">Free</span>
                     </div>
                     <div class="card-body">
@@ -344,7 +425,9 @@
                 <!-- 发散聊天思维+简化回复四部曲 付费 -->
                 <div class="course-card">
                     <div class="card-banner">
-                        <span>📱</span>
+                        <img class="course-banner-img" 
+                            src="images\How-to-reply-in-chat.png" 
+                            alt="How to Reply in Chat Course Cover">
                         <span class="tag tag-free">Free</span>
                     </div>
                     <div class="card-body">
@@ -361,7 +444,9 @@
                 <!-- 社交五步曲完整大师课 -->
                 <div class="course-card">
                     <div class="card-banner">
-                        <span>📝</span>
+                        <img class="course-banner-img" 
+                            src="images\How-to-judge-which-social-stage-you-are-in-with-someone.png" 
+                            alt="How to Judge Which Social Stage You Are in with Someone Course Cover">
                         <span class="tag tag-free">Free</span>
                     </div>
                     <div class="card-body">

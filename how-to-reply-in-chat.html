@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to attract others? ATTRACTION! | Free Course Detail</title>
+    <title>How to reply in chat? | Systematic Social Skills Training</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -104,24 +104,27 @@
             color: var(--text-body);
         }
 
-        /* 课程头部横幅 */
+        /* 课程头部横幅 左右分栏布局 */
         .course-header {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 480px 1fr;
             gap: 3rem;
             margin-bottom: 4rem;
+            align-items: flex-start;
         }
-        .course-banner-box {
+        /* 课程封面卡片样式 */
+        .course-cover-box {
             height: 320px;
-            background: var(--primary);
             border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6rem;
-            color: #fff;
+            overflow: hidden;
             position: relative;
             box-shadow: 0 6px 18px rgba(82, 211, 190, 0.2);
+        }
+        .course-cover-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .tag-free-banner {
             position: absolute;
@@ -148,7 +151,8 @@
         }
         .course-meta-row {
             display: flex;
-            gap: 2rem;
+            justify-content: space-between;
+            align-items: flex-end;
             margin-bottom: 2rem;
         }
         .meta-item {
@@ -160,9 +164,10 @@
             font-size: 0.9rem;
         }
         .meta-item strong {
-            font-size: 1.1rem;
+            font-size: 1.8rem;
             color: var(--text-dark);
             margin-top: 4px;
+            line-height:1;
         }
         .full-access-btn {
             width: 100%;
@@ -175,6 +180,13 @@
             font-weight: 500;
             cursor: pointer;
             transition: opacity 0.25s ease;
+            text-decoration: none;
+            display:block;
+            text-align:center;
+            margin-bottom:1rem;
+        }
+        .full-access-btn:last-child{
+            margin-bottom:0;
         }
         .full-access-btn:hover {
             opacity: 0.9;
@@ -264,7 +276,8 @@
                 gap: 1rem;
             }
         }
-        /* 上下课时导航容器 */
+        
+       /* 上下课时导航容器 */
         .lesson-nav-wrap {
             display: flex;
             justify-content: center;
@@ -273,7 +286,7 @@
         }
         /* 统一按钮基础样式，渐变匹配原图，尺寸减半 */
         .lesson-nav-btn {
-            flex: 0 1 20%; /* 控制宽度，整体只有原图按钮一半宽度 */
+            flex: 0 1 30%; /* 控制宽度，整体只有原图按钮一半宽度 */
             padding: 0.8rem 1rem;
             border-radius: 999px; /* 胶囊圆角，和示例按钮一致 */
             text-decoration: none;
@@ -302,26 +315,12 @@
         @media (max-width:768px) {
             .lesson-nav-wrap {
                 flex-direction: column;
+                gap:1rem;
             }
             .lesson-nav-btn {
                 width: 100%;
                 flex: unset;
             }
-        }
-        .course-meta-row {
-            display: flex;
-            justify-content: space-between; /* 左右两端分开：左边文字，右边星星 */
-            align-items: flex-end; /* 底部对齐，和截图视觉一致 */
-            margin-top: 1rem;
-        }
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-        /* 星星尺寸微调，按需修改字号 */
-        .course-meta-row .meta-item strong {
-            font-size: 1.8rem;
-            line-height: 1;
         }
     </style>
 </head>
@@ -335,8 +334,8 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="course.html">Course</a>
-            <a href="#0">Contact the author</a>
-            <a href="login.html" class="nav-login-btn">Login</a>
+            <a href="contactauthor.html">Contact the author</a>
+            <a id="auth-link" href="login.html"></a>
         </div>
         <!-- 通用导航栏导航区域 -->
         <script>
@@ -346,7 +345,7 @@
             if (authLink) {
                 if (isLoggedIn) {
                     authLink.innerText = 'My Profile';
-                    authLink.href = 'profile.html';
+                    authLink.href = 'myprofile.html';
                 } else {
                     authLink.innerText = 'Login';
                     authLink.href = 'login.html';
@@ -367,12 +366,14 @@
             <span>How to reply in chat?</span>
         </div>
 
-        <!-- 课程头部 -->
+        <!-- 课程头部 左右布局 -->
         <div class="course-header">
-            <div class="course-banner-box">
-                💪
+            <!-- 左侧课程封面图 -->
+            <div class="course-cover-box">
+                <img class="course-banner" src="images/How-to-reply-in-chat.png" alt="How to Reply in Chat Course Cover">
                 <span class="tag-free-banner">Free</span>
             </div>
+            <!-- 右侧课程文字 -->
             <div class="course-info">
                 <h1>How to reply in chat?</h1>
                 <p class="course-desc">
@@ -381,32 +382,26 @@
                 <div class="course-meta-row">
                     <div class="meta-item">
                         <small>Total Lessons</small>
-                        <strong>3 Lesson</strong>
+                        <strong>3 Lessons</strong>
                     </div>
                     <div class="meta-item">
-                    
                         <strong>⭐⭐⭐⭐</strong>
                     </div>
-                    
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
-    <a href="how-to-reply-in-chat-topic.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
-        How to accumulate conversation topics?
-    </a>
-    <a href="how-to-reply-in-chat-content.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
-        The Four-Step Reply Process
-    </a>
-    <a href="how-to-reply-in-chat-thinking.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
-        Divergent Conversational Thinking
-    </a>
-</div>
-</a>
-
+                <a href="how-to-reply-in-chat-topic.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
+                    How to accumulate conversation topics?
+                </a>
+                <a href="how-to-reply-in-chat-content.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
+                    The Four-Step Reply Process
+                </a>
+                <a href="how-to-reply-in-chat-thinking.html" class="full-access-btn" style="text-decoration: none; display: block; text-align: center;">
+                    Divergent Conversational Thinking
+                </a>
             </div>
         </div>
-
-        
     </div>
+
     <!-- Prev / Next Lesson Navigation -->
     <div class="lesson-nav-wrap">
     <a href="Genuine-Conversation-Principles.html" class="lesson-nav-btn prev-btn">
@@ -417,5 +412,6 @@
         <span>Next Lesson →</span>
         <small>How to judge which social stage you are in with someone?</small>
     </a>
+
 </body>
 </html>

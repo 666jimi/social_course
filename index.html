@@ -183,8 +183,8 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="course.html">Course</a>
-            <a href="#0">Contact the author</a>
-            <a href="login.html" class="nav-login-btn">Login</a>
+            <a href="contactauthor">Contact the author</a>
+            <a id="auth-link" href="login.html"></a>
         </div>
         <!-- 通用导航栏导航区域 -->
         <script>
@@ -194,7 +194,7 @@
             if (authLink) {
                 if (isLoggedIn) {
                     authLink.innerText = 'My Profile';
-                    authLink.href = 'profile.html';
+                    authLink.href = 'myprofile.html';
                 } else {
                     authLink.innerText = 'Login';
                     authLink.href = 'login.html';

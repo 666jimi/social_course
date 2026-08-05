@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Systematic Social Skills Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --gray-border: #e5e7eb;
+            --danger: #ef4444;
+            --white: #ffffff;
+            --shadow: 0 4px 16px rgba(82, 211, 190, 0.15);
+        }
+        body {
+            background-color: var(--gray-light);
+            color: var(--text-body);
+            min-height: 100vh;
+        }
+
+        /* 顶部导航栏（和登录页完全统一） */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-body);
+            font-size: 1.1rem;
+        }
+        #auth-link {
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        #auth-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 主体容器居中 */
+        .profile-wrap {
+            max-width: 700px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+        .profile-card {
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+        }
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .profile-title h1 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .member-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .member-badge.free {
+            background: #9CA3AF;
+        }
+
+        /* 用户信息列表 */
+        .info-list {
+            border-top: 1px solid var(--gray-border);
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .info-label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        .info-value {
+            color: var(--text-body);
+        }
+
+        /* 功能按钮区域 */
+        .btn-group {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        .btn-logout {
+            background: var(--white);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+        .btn-logout:hover {
+            background: #fef2f2;
+        }
+
+        /* 会员权益卡片 */
+        .benefit-card {
+            margin-top: 2rem;
+            background: rgba(82, 211, 190, 0.08);
+            border-radius: 14px;
+            padding: 1.8rem;
+        }
+        .benefit-card h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        .benefit-card ul {
+            padding-left: 1.2rem;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏（全局动态登录态） -->
+    <nav>
+        <div class="logo">
+            <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="course.html" class="nav-link">Course</a>
+            <a href="contactauthor.html" class="nav-link">Contact the author</a>
+            <a id="auth-link" href="login.html"></a>
+        </div>
+        <!-- 通用导航栏导航区域 -->
+        <script>
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                if (isLoggedIn) {
+                    authLink.innerText = 'My Profile';
+                    authLink.href = 'myprofile.html';
+                } else {
+                    authLink.innerText = 'Login';
+                    authLink.href = 'login.html';
+                }
+            }
+        }
+        checkAuth();
+        </script>
+    </nav>
+
+    <div class="profile-wrap">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-title">
+                    <h1 id="userName">Username</h1>
+                    <span class="member-badge free" id="memberLevel">Free Member</span>
+                </div>
+            </div>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <span class="info-label">Registered Email</span>
+                    <span class="info-value" id="userEmail">user@example.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Registration Date</span>
+                    <span class="info-value" id="registerTime">2026-01-01</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Account Status</span>
+                    <span class="info-value">Active</span>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="location.href='course-list.html'">Browse Courses</button>
+                <button class="btn btn-logout" id="logoutBtn">Log Out</button>
+            </div>
+
+            <!-- 会员升级提示 -->
+            <div class="benefit-card">
+                <h3>Upgrade to Premium Member</h3>
+                <ul>
+                    <li>Unlock all premium course videos</li>
+                    <li>One-on-one consultation guidance</li>
+                    <li>Exclusive downloadable course materials</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局登录状态校验（全站通用）
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                if (isLoggedIn) {
+                    authLink.innerText = 'My Profile';
+                    authLink.href = 'myprofile.html';
+                } else {
+                    authLink.innerText = 'Login';
+                    authLink.href = 'login.html';
+                    // 未登录强制跳转登录页
+                    location.href = "login.html";
+                }
+            }
+        }
+        checkAuth();
+
+        // 初始化用户资料
+        function initProfile() {
+            const userName = localStorage.getItem('userName') || 'Guest User';
+            const userEmail = localStorage.getItem('userEmail') || '';
+            const registerDate = localStorage.getItem('registerDate') || 'Unrecorded';
+            const memberType = localStorage.getItem('memberType') || 'free';
+
+            document.getElementById('userName').innerText = userName;
+            document.getElementById('userEmail').innerText = userEmail;
+            document.getElementById('registerTime').innerText = registerDate;
+
+            // 会员等级标签切换
+            const memberBadge = document.getElementById('memberLevel');
+            if(memberType === 'premium'){
+                memberBadge.innerText = 'Premium Member';
+                memberBadge.classList.remove('free');
+            }else{
+                memberBadge.innerText = 'Free Member';
+                memberBadge.classList.add('free');
+            }
+        }
+        initProfile();
+
+        // 退出登录逻辑
+        document.getElementById('logoutBtn').addEventListener('click', function(){
+            // 清空全部登录缓存
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userPwd');
+            // 可选：保留注册时间/会员类型，如需清空则放开下面两行
+            // localStorage.removeItem('registerDate');
+            // localStorage.removeItem('memberType');
+            alert('Successfully logged out');
+            location.href = 'login.html';
+        })
+    </script>
+</body>
+</html>

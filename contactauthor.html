@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Author | Systematic Social Skills Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --gray-border: #e5e7eb;
+            --danger: #ef4444;
+            --white: #ffffff;
+            --shadow: 0 4px 16px rgba(82, 211, 190, 0.15);
+        }
+        body {
+            background-color: var(--gray-light);
+            color: var(--text-body);
+            min-height: 100vh;
+        }
+
+        /* 全局导航栏（和Login、Profile完全统一） */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-right {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-body);
+            font-size: 1.1rem;
+        }
+        #auth-link {
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        #auth-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 页面主体容器 */
+        .contact-container {
+            max-width: 720px;
+            margin: 4rem auto;
+            padding: 0 1.5rem;
+        }
+        .contact-card {
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 3rem;
+        }
+        .contact-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+        .contact-subtitle {
+            text-align: center;
+            color: #6B7280;
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        /* 联系方式区块通用标题 */
+        .block-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin: 2.2rem 0 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+        /* 邮箱展示模块 */
+        .email-box {
+            background: rgba(82, 211, 190, 0.08);
+            border-radius: 12px;
+            padding: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .email-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        .copy-btn {
+            padding: 0.5rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: #fff;
+            cursor: pointer;
+        }
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 社交账号布局 */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+        .social-item:hover {
+            border-color: var(--primary);
+            background: rgba(82, 211, 190, 0.05);
+        }
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .icon-tiktok {
+            background: #000000;
+        }
+        .icon-insta {
+            background: #E4405F;
+        }
+        .icon-facebook {
+            background: #1877F2;
+        }
+
+        /* 底部备注文案 */
+        .note-text {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-border);
+            text-align: center;
+            color: #6B7280;
+            line-height: 1.7;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航（全局登录状态联动） -->
+    <nav>
+        <div class="logo">
+            <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="course.html" class="nav-link">Course</a>
+            <a href="contactauthor.html" class="nav-link">Contact the author</a>
+            <a id="auth-link" href="login.html"></a>
+        </div>
+        
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-card">
+            <h1 class="contact-title">Contact The Author</h1>
+            <p class="contact-subtitle">For business cooperation, course consultation & personal communication</p>
+
+            <!-- 邮箱联系模块 -->
+            <h3 class="block-title">Business Email</h3>
+            <div class="email-box">
+                <span class="email-text" id="authorEmail">contact@socialskillscourse.com</span>
+                <button class="copy-btn" id="copyEmailBtn">Copy Email</button>
+            </div>
+
+            <!-- 社交平台账号 -->
+            <h3 class="block-title">Social Media Accounts</h3>
+            <div class="social-grid">
+                <a href="https://tiktok.com/@your_tiktok_id" target="_blank" class="social-item">
+                    <div class="social-icon icon-tiktok">TK</div>
+                    <span>@your_tiktok_id</span>
+                </a>
+                <a href="https://instagram.com/@your_insta_id" target="_blank" class="social-item">
+                    <div class="social-icon icon-insta">IG</div>
+                    <span>@your_insta_id</span>
+                </a>
+                <a href="https://facebook.com/your_page" target="_blank" class="social-item">
+                    <div class="social-icon icon-facebook">FB</div>
+                    <span>Author Official Page</span>
+                </a>
+            </div>
+
+            <!-- 补充说明文字 -->
+            <div class="note-text">
+                <p>Working hours reply: UTC+8 10:00 – 20:00</p>
+                <p>Course technical problems please leave a message on the course page, business cooperation priority by email</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全局登录状态导航适配（全站通用函数）
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                if (isLoggedIn) {
+                    authLink.innerText = 'My Profile';
+                    authLink.href = 'myprofile.html';
+                } else {
+                    authLink.innerText = 'Login';
+                    authLink.href = 'login.html';
+                }
+            }
+        }
+        checkAuth();
+
+        // 复制邮箱功能
+        const copyBtn = document.getElementById('copyEmailBtn');
+        const emailText = document.getElementById('authorEmail').innerText;
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(emailText);
+                copyBtn.innerText = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.innerText = 'Copy Email';
+                }, 2000);
+            } catch (err) {
+                alert('Copy failed, please copy manually: ' + emailText);
+            }
+        })
+    </script>
+</body>
+</html>

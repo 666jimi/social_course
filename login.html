@@ -230,7 +230,7 @@
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="course-list.html" class="nav-link">Course</a>
-            <a href="#0">Contact the author</a>
+            <a href="contactauthor.html" class="nav-link">Contact the author</a>
             <!-- 重点：这里不要直接写My Profile，留空由JS渲染 -->
             <a id="auth-link" href="login.html"></a>
         </div>
@@ -289,7 +289,7 @@
                 if (isLoggedIn) {
                     // 已登录：显示个人主页
                     authLink.innerText = 'My Profile';
-                    authLink.href = 'profile.html';
+                    authLink.href = 'myprofile.html';
                 } else {
                     // 未登录/注册状态：显示登录按钮
                     authLink.innerText = 'Login';
@@ -343,6 +343,14 @@
             localStorage.setItem('userEmail', email);
             localStorage.setItem('userPwd', pwd);
             localStorage.setItem('isLoggedIn','true');
+
+            // ============【新增代码开始】============
+            // 保存账号注册时间（本地日期格式）
+            localStorage.setItem('registerDate', new Date().toLocaleDateString());
+            // 默认注册用户为免费会员
+            localStorage.setItem('memberType', 'free');
+            // ============【新增代码结束】============
+
             alert("Register success! Auto logged in");
             location.href = "index.html";
         })

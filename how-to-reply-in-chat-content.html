@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 5: The Four-Step Reply Process | Social Attraction Course</title>
+    <title>How to reply in chat? | Systematic Social Skills Training</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -261,8 +261,8 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="course.html">Course</a>
-            <a href="#0">Contact the author</a>
-            <a href="login.html" class="nav-login-btn">Login</a>
+            <a href="contactauthor.html">Contact the author</a>
+            <a id="auth-link" href="login.html"></a>
         </div>
         <!-- 通用导航栏导航区域 -->
         <script>
@@ -272,7 +272,7 @@
             if (authLink) {
                 if (isLoggedIn) {
                     authLink.innerText = 'My Profile';
-                    authLink.href = 'profile.html';
+                    authLink.href = 'myprofile.html';
                 } else {
                     authLink.innerText = 'Login';
                     authLink.href = 'login.html';

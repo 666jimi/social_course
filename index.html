@@ -170,6 +170,16 @@
                 display: none;
             }
         }
+
+        .flash-yellow {
+            color: #FFFF00;
+            /* 多层阴影做荧光光晕 */
+            text-shadow:
+                0 0 4px #FFFF00,
+                0 0 10px #FFFF00,
+                0 0 20px rgba(255, 255, 0, 0.6);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -210,6 +220,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="main-hero-title-glow">Systematic Social Skills Training</h1>
+            <span class="flash-yellow">Hello, the website is still in preparation. You can browse our free articles for now. More high-quality content is being updated by our authors. You don’t need to register yet, as the server is still setting up the member registration feature.</span>
             <p>Get out of singlehood, get a raise, make business deals, strengthen friendships —— one class can help you with all of it.</p>
             <a href="./course.html" class="cta-btn" id="startLearnBtn">Start Learning Now</a>
         </div>

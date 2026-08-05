@@ -87,7 +87,7 @@
             background: url('./images/socialtraining.png') center center / cover no-repeat;
             border-radius: 20px 20px 0 0;
             margin: 0;
-            overflow: hidden;
+            
         }
 
         /* 半透明遮罩，优化文字可读性 */
@@ -169,16 +169,26 @@
             .nav-links {
                 display: none;
             }
+            /* 新增黄色荧光文字压缩配置 */
+            .flash-yellow {
+                font-size: 0.85rem;   /* 缩小字体，单行文字变短，换行变少 */
+                line-height: 1.3;     /* 收紧行间距，压缩整体高度 */
+                padding: 6px 8px;     /* 缩减上下内边距，减少空白占位 */
+                max-height: 42vh;     /* 限制整体盒子最大高度，杜绝撑开挤压上下元素 */
+                overflow-y: auto;     /* 文字超长内部滚动，不会挤按钮、标题 */
+                text-shadow: 0 0 2px #ffff00; /* 弱化发光，避免字体发虚被迫换行 */
+            }
         }
-
         .flash-yellow {
             color: #FFFF00;
-            /* 多层阴影做荧光光晕 */
             text-shadow:
-                0 0 4px #FFFF00,
-                0 0 10px #FFFF00,
-                0 0 20px rgba(255, 255, 0, 0.6);
+                0 0 3px #FFFF00,
+                0 0 8px rgba(255, 255, 0, 0.5);
             font-weight: bold;
+            line-height: 1.6;  /* ✅ 行间距，解决堆叠，1.5‑1.8之间最合适 */
+            padding: 0 12px;   /* ✅ 左右留白，文字不要贴手机屏幕左右边缘 */
+            font-size: clamp(1.1rem,3vw,1.6rem); /* ✅ 移动端自适应字号 */
+            text-align: center;
         }
     </style>
 </head>
@@ -220,8 +230,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="main-hero-title-glow">Systematic Social Skills Training</h1>
-            <p><span class="flash-yellow">Hello, the website is still in preparation. You can browse our free articles for now. More high-quality content is being updated by our authors. You don’t need to register yet, as the server is still setting up the member registration feature.</span>
-            </p>
+            <div class="flash-yellow">
+            Hello, the website is still in preparation. You can browse our free articles for now. More high‑quality content is being updated by our authors. You don’t need to register yet, as the server is still setting up the member registration feature.
+            </div>
             <a href="./course.html" class="cta-btn" id="startLearnBtn">Start Learning Now</a>
         </div>
     </section>

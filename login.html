@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Systematic Social Skills Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --primary: #52D3BE;
+            --primary-dark: #207F4C;
+            --text-dark: #1F2937;
+            --text-body: #374151;
+            --gray-light: #F3F4F6;
+            --gray-border: #e5e7eb;
+            --danger: #ef4444;
+            --white: #ffffff;
+            --shadow: 0 4px 16px rgba(82, 211, 190, 0.15);
+        }
+        body {
+            background-color: var(--gray-light);
+            color: var(--text-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 导航栏 全站统一样式 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+        }
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        /* 登录按钮动态样式 */
+        #auth-link {
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        #auth-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* 登录卡片主体 */
+        .auth-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        .auth-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 460px;
+            padding: 3rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        .auth-title {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 0.8rem;
+        }
+        .auth-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+
+        /* 切换标签 */
+        .tab-wrap {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem;
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #6b7280;
+            position: relative;
+        }
+        .tab-btn.active {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* 表单样式 */
+        .form-box {
+            display: none;
+        }
+        .form-box.show {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--gray-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: Inter;
+            transition: 0.2s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(82, 211, 190, 0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            margin-top: 0.5rem;
+        }
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+        .tip-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        .tip-text span {
+            color: var(--primary-dark);
+            cursor: pointer;
+            font-weight: 500;
+        }       
+    </style>
+</head>
+<body>
+    <!-- 导航栏：右上角按钮ID固定为auth-link，文字由JS动态控制，不要写死My Profile -->
+    <nav>
+        <div class="logo">
+        <img class="logo-mark" src="./images/woodfrog.png" alt="Wood Frog Logo">
+        Wood Frog Social
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="course-list.html" class="nav-link">Course</a>
+            <a href="#0">Contact the author</a>
+            <!-- 重点：这里不要直接写My Profile，留空由JS渲染 -->
+            <a id="auth-link" href="login.html"></a>
+        </div>
+    </nav>
+
+    <!-- 登录注册卡片 -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">Welcome Back</h2>
+            <p class="auth-subtitle">Sign in or create your account to access all courses</p>
+
+            <!-- 切换登录/注册标签 -->
+            <div class="tab-wrap">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+
+            <!-- 登录表单 -->
+            <div class="form-box show" id="login">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-pwd" placeholder="Enter your password">
+                </div>
+                <button class="submit-btn" id="login-btn">Sign In</button>
+            </div>
+
+            <!-- 注册表单 -->
+            <div class="form-box" id="register">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="reg-name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="reg-pwd" placeholder="Create password">
+                </div>
+                <button class="submit-btn" id="reg-btn">Create Account</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. 登录状态检测【核心修改：删除登录页强制跳转Profile的代码】
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                if (isLoggedIn) {
+                    // 已登录：显示个人主页
+                    authLink.innerText = 'My Profile';
+                    authLink.href = 'profile.html';
+                } else {
+                    // 未登录/注册状态：显示登录按钮
+                    authLink.innerText = 'Login';
+                    authLink.href = 'login.html';
+                }
+            }
+            // ========== 关键修复：删掉这句强制跳转代码 ==========
+            // if(isLoggedIn) location.href = "profile.html";
+        }
+        // 页面加载执行状态渲染
+        checkAuth();
+
+        // 2. 登录/注册标签切换
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const formBoxes = document.querySelectorAll('.form-box');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', ()=>{
+                const targetTab = btn.dataset.tab;
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                formBoxes.forEach(box => box.classList.remove('show'));
+                document.getElementById(targetTab).classList.add('show');
+            })
+        })
+
+        // 3. 登录逻辑
+        document.getElementById('login-btn').addEventListener('click', ()=>{
+            const email = document.getElementById('login-email').value.trim();
+            const pwd = document.getElementById('login-pwd').value.trim();
+            if(!email || !pwd) return alert("Please fill all fields");
+            
+            const saveEmail = localStorage.getItem('userEmail');
+            const savePwd = localStorage.getItem('userPwd');
+            if(email === saveEmail && pwd === savePwd){
+                localStorage.setItem('isLoggedIn','true');
+                alert("Login success!");
+                location.href = "index.html";
+            }else{
+                alert("Wrong email or password, please register first");
+            }
+        })
+
+        // 4. 注册逻辑
+        document.getElementById('reg-btn').addEventListener('click', ()=>{
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const pwd = document.getElementById('reg-pwd').value.trim();
+            if(!name || !email || !pwd) return alert("Please fill all fields");
+            
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPwd', pwd);
+            localStorage.setItem('isLoggedIn','true');
+            alert("Register success! Auto logged in");
+            location.href = "index.html";
+        })
+    </script>
+</body>
+</html>

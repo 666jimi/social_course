@@ -250,6 +250,23 @@
             <a href="#0">Contact the author</a>
             <a href="login.html" class="nav-login-btn">Login</a>
         </div>
+        <!-- 通用导航栏导航区域 -->
+        <script>
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const authLink = document.getElementById('auth-link');
+            if (authLink) {
+                if (isLoggedIn) {
+                    authLink.innerText = 'My Profile';
+                    authLink.href = 'profile.html';
+                } else {
+                    authLink.innerText = 'Login';
+                    authLink.href = 'login.html';
+                }
+            }
+        }
+        checkAuth();
+        </script>
     </nav>
 
     <div class="container">
